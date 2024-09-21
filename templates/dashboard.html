@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}What To Do ? {% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>All Tasks</h1>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <div class="mb-3">
+            <label for="task" class="form-label">Task</label>
+            <input type="text" class="form-control" id="task" name="task" required>
+        </div>
+        <div class="mb-3">
+            <label for="due_date" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="due_date" name="due_date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+
+    <h2 class="mt-4">Your Tasks</h2>
+    <ul class="list-group">
+        {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center {% if task.completed %}list-group-item-success{% endif %}">
+                <div>
+                    <input type="checkbox" onchange="location.href='{{ url_for('complete_task', task_id=task.id) }}'" {% if task.completed %}checked{% endif %}>
+                    <strong>{{ task.task }}</strong> - Due: {{ task.due_date.strftime('%Y-%m-%d') }}
+                </div>
+                <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-danger btn-sm">✖</a>
+            </li>
+        {% else %}
+            <li class="list-group-item">No tasks available.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

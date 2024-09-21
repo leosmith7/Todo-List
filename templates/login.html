@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}What To Do ? {% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 150px);">
+  <div class="text-center position-relative" style="width: 80%;">
+    <h2>The Best Way To Track Your Tasks</h2>
+    <hr class="my-4 position-absolute" style="width: 60%; left: 20%; border-top: 1px solid #000;">
+    <div class="d-flex justify-content-center mt-5">
+      <button type="button" class="btn me-2" style="background-color: #4CAF50; border-color: #1A5319; color: white;" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+      <button type="button" class="btn" style="background-color: #4CAF50; border-color: #1A5319; color: white;" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/">
+          <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="loginEmail" name="loginEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginPassword" name="loginPassword" required>
+          </div>
+          <button type="submit" name="login" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/">
+          <div class="mb-3">
+            <label for="registerName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="registerName" name="registerName" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="registerEmail" name="registerEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="registerPassword" name="registerPassword" required>
+          </div>
+          <div class="mb-3">
+            <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="registerConfirmPassword" name="registerConfirmPassword" required>
+          </div>
+          <button type="submit" name="register" class="btn btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
